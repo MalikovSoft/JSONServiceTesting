@@ -43,15 +43,15 @@ class API {
     let result = {};
     if (params.id) {
       result.user = await this.getUserByID(params.id);
-      params.with.forEach(element => {
-        result[`${element}`] = this.axios.get(
-          `/${element}?userId=${result.user.userId}`
-        );
-      });
+      for (const elem of params.with) {
+        let tmp = await this.axios.get(`/${elem}?userId=${params.id}`);
+        result[`${elem}`] = tmp.data;
+      }
     } else {
-      params.with.forEach(element => {
-        result[`${element}`] = this.axios.get(`/${element}`);
-      });
+      for (const elem of params.with) {
+        let tmp = await this.axios.get(`/${elem}`);
+        result[`${elem}`] = tmp.data;
+      }
     }
     return result;
   }
