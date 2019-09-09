@@ -9,40 +9,71 @@ describe('Тестирование JSON сервиса...', async () => {
 
   it('Получение списка всех пользователей...', async () => {
     const answer = await api.getAllUsers();
-    console.log(`Получено пользователей: ${answer.length}`);
   });
 
   it('Получение пользователя по идентификатору...', async () => {
     const answer = await api.getUserByID(userId);
-    console.log(`Получен пользователь: ${answer.name}`);
   });
 
   it('Получение всех постов...', async () => {
     const answer = await api.getAllPosts();
-    console.log(`Количество постов: ${answer.length}`);
   });
 
   it('Получение всех заданий...', async () => {
     const answer = await api.getAllTodos();
-    console.log(`Количество заданий: ${answer.length}`);
   });
 
   it('Получение всех постов пользователя...', async () => {
     const answer = await api.getAllPostsOfUser(userId);
-    console.log(`Количество постов пользователя: ${answer.length}`);
   });
 
   it('Получение всех заданий пользователя...', async () => {
     const answer = await api.getAllTodosOfUser(userId);
-    console.log(`Количество заданий пользователя: ${answer.length}`);
   });
 
-  it('Параметризированный запрос информации...', async () => {
+  it('Параметризированный запрос информации... с заданием пользователя + posts + todos', async () => {
     const answer = await api.getInfoWithParams({
       id: userId,
       with: ['posts', 'todos']
     });
-    console.log(`${JSON.stringify(answer)}`);
+  });
+
+  it('Параметризированный запрос информации... с заданием пользователя + posts', async () => {
+    const answer = await api.getInfoWithParams({
+      id: userId,
+      with: ['posts']
+    });
+  });
+
+  it('Параметризированный запрос информации... с заданием пользователя + todos', async () => {
+    const answer = await api.getInfoWithParams({
+      id: userId,
+      with: ['todos']
+    });
+  });
+
+  it('Параметризированный запрос информации... без задания пользователя', async () => {
+    const answer = await api.getInfoWithParams({
+      with: ['posts', 'todos']
+    });
+  });
+
+  it('Параметризированный запрос информации... без задания пользователя + posts + todos', async () => {
+    const answer = await api.getInfoWithParams({
+      with: ['posts', 'todos']
+    });
+  });
+
+  it('Параметризированный запрос информации... без задания пользователя + posts', async () => {
+    const answer = await api.getInfoWithParams({
+      with: ['posts']
+    });
+  });
+
+  it('Параметризированный запрос информации... без задания пользователя + todos', async () => {
+    const answer = await api.getInfoWithParams({
+      with: ['todos']
+    });
   });
 });
 
