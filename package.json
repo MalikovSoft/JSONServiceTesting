@@ -1,0 +1,30 @@
+{
+  "name": "jsonservicetesting",
+  "version": "1.0.0",
+  "description": "Тестирование сервиса JSON",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MalikovSoft/JSONServiceTesting.git"
+  },
+  "author": "Alexander Malikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MalikovSoft/JSONServiceTesting/issues"
+  },
+  "homepage": "https://github.com/MalikovSoft/JSONServiceTesting#readme",
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-node": "^10.0.0",
+    "mocha": "^6.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15"
+  }
+}
