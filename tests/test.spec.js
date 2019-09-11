@@ -9,10 +9,20 @@ describe('Тестирование JSON сервиса...', async () => {
 
   it('Получение списка всех пользователей...', async () => {
     const answer = await api.getAllUsers();
+    assert(answer.length > 0);
   });
 
   it('Получение пользователя по идентификатору...', async () => {
     const answer = await api.getUserByID(userId);
+  });
+
+  it('Получение пользователя по неверному идентификатору...', async () => {
+    assert.rejects(
+      async () => {
+        await api.getUserByID(-1);
+      },
+      { name: 'Error' }
+    );
   });
 
   it('Получение всех постов...', async () => {

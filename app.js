@@ -1,4 +1,5 @@
 const axios = require('axios');
+const assert = require('assert');
 const _ = require('lodash');
 
 class API {
@@ -15,6 +16,7 @@ class API {
   }
 
   async getUserByID(userId) {
+    //assert(userId < 0);
     const user = await this.axios.get(`/users/${userId}`);
     return user.data;
   }
