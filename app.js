@@ -16,9 +16,16 @@ class API {
   }
 
   async getUserByID(userId) {
-    //assert(userId < 0);
-    const user = await this.axios.get(`/users/${userId}`);
-    return user.data;
+    try {
+      const user = await this.axios.get(`/users/${userId}`);
+      if (user.status == 200) {
+        return user.data;
+      } else {
+        return user;
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async getAllPosts() {
